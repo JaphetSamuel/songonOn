@@ -1,15 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:pocketbase/pocketbase.dart';
 import 'package:songon_on/app/components/home_banner/views/home_banner_spot_view.dart';
+import 'package:songon_on/app/data/models/user_model.dart';
 import 'package:songon_on/app/data/providers/spot_provider.dart';
 import 'package:velocity_x/velocity_x.dart';
 import 'package:get/get.dart';
 
 class HomeBanner extends StatelessWidget {
   HomeBanner({Key? key}) : super(key: key);
-  PocketBase pb = Get.find<PocketBase>();
+  final PocketBase pb = Get.find<PocketBase>();
 
   final SpotProvider spotProvider = Get.find<SpotProvider>();
+
+  User get user => User.fromRecord(pb.authStore.model);
 
   @override
   Widget build(BuildContext context) {
@@ -47,13 +50,13 @@ class HomeBanner extends StatelessWidget {
     );
   }
 
-  bool isAuthenticated(){
+  Rx<bool> isAuthenticated(){
     print(pb.authStore.isValid);
-    return pb.authStore.isValid;
+    return pb.authStore.isValid.obs;
   }
 
   List<Widget> authZone(BuildContext context) {
-    return isAuthenticated()?  [
+    return isAuthenticated().value?  [
       Align(
         alignment: Alignment.topLeft,
         child: "Bienvenue !"
@@ -64,7 +67,7 @@ class HomeBanner extends StatelessWidget {
       ).px(8).py(5),
       Align(
         alignment: Alignment.topLeft,
-        child: "Japhet Agoua"
+        child: user.username!.toUpperCase()
             .text
             .size(20)
             .fontWeight(FontWeight.bold)

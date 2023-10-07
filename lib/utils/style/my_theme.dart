@@ -5,8 +5,8 @@ class MyTheme {
   static ThemeData get lightTheme {
     return ThemeData(
       colorScheme: ColorScheme.light(
-        background:Colors.white ,
-        surface: Colors.teal.withOpacity(0.04),
+        background:Colors.teal.withOpacity(0.04) ,
+        surface: Colors.white,
         primary: Colors.teal.shade900,
         onSurface: Colors.black,
           onSecondary: Colors.white,

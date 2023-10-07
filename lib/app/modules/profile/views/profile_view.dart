@@ -10,6 +10,13 @@ class ProfileView extends GetView<ProfileController> {
   @override
   Widget build(BuildContext context) {
     return VStack( [
+      ListTile(
+        title: const Text("Créer une activité"),
+        trailing: const Icon(Icons.store_mall_directory_outlined),
+        onTap: () {
+        },
+      ),
+        Divider(),
         ListTile(
           title: const Text("Déconnexion"),
           trailing: const Icon(Icons.logout),

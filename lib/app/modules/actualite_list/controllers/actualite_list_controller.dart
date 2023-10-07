@@ -8,7 +8,8 @@ class ActualiteListController extends GetxController {
   final PocketBase pb = Get.find<PocketBase>();
   final articleProvider = Get.find<ArticleProvider>();
 
-  var articles = <Article>{}.obs;
+  var articles = <Article>[].obs;
+  var mostPopulars = <Article>[].obs;
   var selectedArticle = Article().obs;
 
   final count = 0.obs;
@@ -16,7 +17,8 @@ class ActualiteListController extends GetxController {
   void onInit()async {
     super.onInit();
     print("in actualité controller");
-    await articleProvider.getAllArticle().then((value) => articles.addAll(value));
+    await articleProvider.getMostPopulars().then((value) => mostPopulars.value = value);
+    await articleProvider.getAllArticle().then((value) => articles.value=value);
   }
 
   void getArticle(String id) async {
@@ -27,8 +29,15 @@ class ActualiteListController extends GetxController {
   void onReady() async {
     super.onReady();
     pb.collection('article').subscribe('*', (e)async {
-      await articleProvider.getAllArticle().then((value) => articles.addAll(value));
+      await articleProvider.getAllArticle().then((value) => articles.value=value);
     });
+  }
+
+  @override
+  void refresh() async {
+    super.refresh();
+    await articleProvider.getMostPopulars().then((value) => mostPopulars.value = value);
+    await articleProvider.getAllArticle().then((value) => articles.value=value);
   }
 
   @override

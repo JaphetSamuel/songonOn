@@ -15,9 +15,9 @@ class ArticleCard extends StatelessWidget {
       decoration: BoxDecoration(
         gradient: LinearGradient(
           colors: [
-            Colors.teal.withOpacity(0.7),
-            Colors.teal.withOpacity(0.6),
-            Colors.teal.withOpacity(0.4),
+            Colors.blue.withOpacity(0.2),
+            Colors.blue.withOpacity(0.1),
+            Colors.blue.withOpacity(0.08),
           ],
           begin: Alignment.topLeft,
           end: Alignment.bottomCenter,
@@ -29,7 +29,7 @@ class ArticleCard extends StatelessWidget {
         children: [
           ClipRRect(
               borderRadius:const BorderRadius.vertical(top: Radius.circular(10)),
-              child: Image.network(article.imageUrl()!, fit: BoxFit.fill, height:150,width: Get.width,).box.roundedSM.make()
+              child: Image.network(article.imageUrl()!, fit: BoxFit.cover, height:150,width: Get.width,).box.roundedSM.make()
           ),
           [Icon(Icons.account_circle).px4(), Text(article.auteur!)].hStack(alignment: MainAxisAlignment.start,).pOnly(bottom: 5),
           // Text(article.titre!, style: Theme.of(context).textTheme.titleSmall,),

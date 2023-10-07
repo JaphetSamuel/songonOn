@@ -23,7 +23,20 @@ class ArticleProvider extends GetConnect {
       page: 1,
       perPage: 25,
       filter: 'actif=true',
-      fields: 'id,titre,image,date_publication,source,collectionId, auteur,synopsys'
+      fields: 'id,titre,image,date_publication,source,collectionId, auteur,synopsys',
+      sort: '-created',
+    ).then((value) => liste = value.items.map((e) => Article.fromRecord(e)).toList());
+    return liste;
+  }
+
+  Future<List<Article>> getMostPopulars({int limit = 4})async{
+    var liste = <Article>[];
+    await pb.collection('article').getList(
+      page: 1,
+      perPage: limit,
+      filter: 'actif=true',
+      fields: 'id,titre,image,date_publication,source,collectionId, auteur,synopsys',
+      sort: 'popularite',
     ).then((value) => liste = value.items.map((e) => Article.fromRecord(e)).toList());
     return liste;
   }

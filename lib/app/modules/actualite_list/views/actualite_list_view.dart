@@ -20,10 +20,16 @@ class ActualiteListView extends GetView<ActualiteListController> {
             title:
                 const Text('Actualités', style: TextStyle(color: Colors.white)),
             centerTitle: false,
-            actions: const [
+            actions: [
               IconButton(
+                  onPressed: () => controller.refresh(),
+                  icon: const Icon(
+                    Iconsax.refresh,
+                    color: Colors.white,
+                  )),
+              const IconButton(
                 onPressed: null,
-                icon: const Icon(
+                icon: Icon(
                   Iconsax.search_normal_1,
                   color: Colors.white,
                 ),
@@ -33,36 +39,40 @@ class ActualiteListView extends GetView<ActualiteListController> {
           return controller.articles.isEmpty
               ? const CircularProgressIndicator().centered()
               : ListView(children: [
-                  // Text(
-                  //   "A la une !",
-                  //   style: Theme.of(context).textTheme.titleLarge,
-                  // ).p(16),
                   VxSwiper(
                       autoPlay: true,
-                      items: controller.articles
+                      items: controller.mostPopulars
+                          .getRange(0, 4)
                           .map((article) => ClipRRect(
-                              borderRadius: BorderRadius.circular(10.0),
-                          child:Stack(
-                        fit: StackFit.expand,
-                        children: [
-                          Image.network(article.imageUrl()!, fit: BoxFit.fill,),
-                          Positioned(
-                            bottom: 0,
-                            left: 0,
-                            right: 0,
-                            child: ListTile(
-                              tileColor: Colors.black.withOpacity(0.5),
-                              title: article.source!.text.white.bold.make(),
-                              subtitle: article.synopsys!.text.white.make(),
-                            ),
-                          )
-                        ],
-                      ))
+                                  borderRadius: BorderRadius.circular(10.0),
+                                  child: Stack(
+                                    fit: StackFit.expand,
+                                    children: [
+                                      Image.network(
+                                        article.imageUrl()!,
+                                        fit: BoxFit.fill,
+                                      ),
+                                      Positioned(
+                                        bottom: 0,
+                                        left: 0,
+                                        right: 0,
+                                        child: ListTile(
+                                          title: article.source!.text.white.bold
+                                              .make(),
+                                          subtitle: article.synopsys!.text.white
+                                              .make(),
+                                        ),
+                                      )
+                                    ],
+                                  ))
+                              .pOnly(top: 5, left: 2, right: 2)
                               .box
-                              .px12
                               .rounded
                               .make())
                           .toList()),
+                  const SizedBox(
+                    height: 20,
+                  ),
                   for (var article in controller.articles)
                     ArticleCard(article: article),
                   for (var article in controller.articles)

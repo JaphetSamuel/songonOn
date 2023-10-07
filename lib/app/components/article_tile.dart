@@ -29,7 +29,7 @@ class ArticleTile extends StatelessWidget {
         title: Text(article.source??'', style: Theme.of(context).textTheme.bodyMedium,),
         trailing: ClipRRect(
           borderRadius: BorderRadius.circular(10),
-            child: Image.network(article.imageUrl()!, fit: BoxFit.fill, height:100,width: 90,).box.roundedSM.make()),
+            child: Image.network(article.imageUrl()!, fit: BoxFit.fill, height:110,width: 100,).box.roundedSM.make()),
         subtitle: [
           Text(article.titre!, style: Theme.of(context).textTheme.titleMedium,),
           [

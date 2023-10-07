@@ -22,9 +22,8 @@ class AuthController extends GetxController {
     bool isconnected = await userProvider.login(emailController.text, passwordController.text);
 
     if(isconnected) {
+      Get.back();
       Get.snackbar("Succès", "Connexion réussie");
-      Get.offAllNamed('/home');
-      Get.toNamed('/home',preventDuplicates: false);
     } else {
       Get.snackbar("Erreur", "Une erreur est survenue lors de la connexion");
     }
