@@ -1,0 +1,11 @@
+{
+  "id": "RECORD_ID",
+  "collectionId": "zp5fzthitic9bf6",
+  "collectionName": "BannerSpot",
+  "created": "2022-01-01 01:00:00.123Z",
+  "updated": "2022-01-01 23:59:59.456Z",
+  "description": "test",
+  "Image": "filename.jpg",
+  "link": "https://example.com",
+  "titre": "test"
+}

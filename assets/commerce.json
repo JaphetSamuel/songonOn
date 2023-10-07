@@ -1,0 +1,19 @@
+{
+  "id": "RECORD_ID",
+  "collectionId": "vooopcowcq5dbqi",
+  "collectionName": "commerce",
+  "created": "2022-01-01 01:00:00.123Z",
+  "updated": "2022-01-01 23:59:59.456Z",
+  "nom": "test",
+  "description": "test",
+  "adresse": "test",
+  "categorie": [
+    "Restaurant"
+  ],
+  "actif": true,
+  "siteweb": "test",
+  "telephone": "test",
+  "horaire": "2022-01-01 10:00:00.123Z",
+  "image": "filename.jpg",
+  "coordonnee": "JSON"
+}

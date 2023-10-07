@@ -1,0 +1,15 @@
+{
+  "id": "RECORD_ID",
+  "collectionId": "0006rchdnpmao1y",
+  "collectionName": "Article",
+  "created": "2022-01-01 01:00:00.123Z",
+  "updated": "2022-01-01 23:59:59.456Z",
+  "titre": "test",
+  "contenu": "test",
+  "auteur": "test",
+  "source": "test",
+  "weblink": "https://example.com",
+  "image": "filename.jpg",
+  "popularite": 123,
+  "date_publication": "2022-01-01 10:00:00.123Z"
+}
